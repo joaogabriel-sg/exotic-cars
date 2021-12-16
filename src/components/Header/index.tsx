@@ -1,27 +1,11 @@
-import 'react-datepicker/dist/react-datepicker.css';
+import { useState } from 'react';
 
-import { forwardRef, InputHTMLAttributes, useState } from 'react';
-import DatePicker from 'react-datepicker';
+import { SearchBar } from '@components';
 
 import * as S from './styles';
 
-const InputDate = forwardRef<
-  HTMLInputElement,
-  InputHTMLAttributes<HTMLInputElement>
->(({ value, onClick, onChange }, ref) => (
-  <S.Input
-    ref={ref}
-    type="date"
-    value={value}
-    onChange={onChange}
-    onClick={onClick}
-  />
-));
-
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const minDate = new Date();
 
   const handleOpenMobileMenu = () => {
     setIsMobileMenuOpen(true);
@@ -38,38 +22,7 @@ export function Header() {
           <S.HighlightedText>Exotic</S.HighlightedText> Cars
         </S.Logo>
 
-        <S.SearchBarContainer>
-          <S.InputWrapper>
-            <S.LocationIcon />
-            <S.Input type="text" defaultValue="North Carolina" />
-          </S.InputWrapper>
-
-          <S.CalendarInputs>
-            <S.InputWrapper htmlFor="dateStart">
-              <S.CalendarIcon />
-              <DatePicker
-                id="dateStart"
-                onChange={() => {}}
-                minDate={minDate}
-                customInput={<InputDate />}
-              />
-            </S.InputWrapper>
-
-            <S.InputWrapper htmlFor="dateEnd">
-              <S.CalendarIcon />
-              <DatePicker
-                id="dateEnd"
-                onChange={() => {}}
-                minDate={minDate}
-                customInput={<InputDate />}
-              />
-            </S.InputWrapper>
-          </S.CalendarInputs>
-
-          <S.SearchButton>
-            <S.SearchIcon />
-          </S.SearchButton>
-        </S.SearchBarContainer>
+        <SearchBar />
 
         <S.AuthButtons isMobileMenuOpen={isMobileMenuOpen}>
           <S.CloseMobileMenuButton onClick={handleCloseMobileMenu}>
@@ -81,7 +34,7 @@ export function Header() {
         </S.AuthButtons>
 
         <S.OpenMobileMenuButton onClick={handleOpenMobileMenu}>
-          <S.BurgerMenuIcon />
+          <S.MenuIcon />
         </S.OpenMobileMenuButton>
       </S.Content>
     </S.Container>
