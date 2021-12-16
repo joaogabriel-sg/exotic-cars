@@ -1,5 +1,11 @@
+import { Header } from '@components';
+
 import * as S from './styles';
 
 export function CarsOverview() {
-  return <S.Container>Cars Overview</S.Container>;
+  return (
+    <S.Container>
+      <Header />
+    </S.Container>
+  );
 }
