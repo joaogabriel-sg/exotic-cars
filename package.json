@@ -23,6 +23,7 @@
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
     "react": "^17.0.2",
+    "react-datepicker": "^4.5.0",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-router-dom": "^6.1.1",
@@ -52,6 +53,7 @@
   "devDependencies": {
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
+    "@types/react-datepicker": "^4.3.2",
     "@types/styled-components": "^5.1.18",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
