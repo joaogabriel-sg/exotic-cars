@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import { CarDetails, CarsOverview } from '../pages';
+import { CarDetails, CarsOverview } from '@pages';
 
 export function AppRoutes() {
   return (

@@ -1,9 +1,9 @@
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import { AppRoutes } from './routes';
+import { AppRoutes } from '@routes';
 
-import { GlobalStyle, theme } from './shared/styles';
+import { GlobalStyle, theme } from '@shared/styles';
 
 function App() {
   return (
