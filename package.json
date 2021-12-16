@@ -25,7 +25,8 @@
     "lint": "eslint src --ext ts,tsx",
     "lint:fix": "yarn lint --fix",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' 'src/**/*.tsx' --write",
-    "type-check": "tsc --project tsconfig.json --pretty --noEmit"
+    "type-check": "tsc --project tsconfig.json --pretty --noEmit",
+    "server": "json-server --watch db.json --port 3333 --delay 700"
   },
   "eslintConfig": {
     "extends": [
