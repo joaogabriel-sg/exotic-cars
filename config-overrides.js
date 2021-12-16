@@ -10,6 +10,7 @@ module.exports = function override(config) {
       '@routes': path.resolve(__dirname, 'src', 'routes'),
       '@shared/*': path.resolve(__dirname, 'src', 'shared'),
       '@shared/styles': path.resolve(__dirname, 'src', 'shared', 'styles'),
+      '@shared/types': path.resolve(__dirname, 'src', 'shared', 'types'),
     },
   };
 

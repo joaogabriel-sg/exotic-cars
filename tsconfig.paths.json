@@ -6,7 +6,8 @@
       "@pages": ["./src/pages"],
       "@routes": ["./src/routes"],
       "@shared/*": ["./src/shared/*"],
-      "@shared/styles": ["./src/shared/styles"]
+      "@shared/styles": ["./src/shared/styles"],
+      "@shared/types": ["./src/shared/types"]
     }
   }
 }
