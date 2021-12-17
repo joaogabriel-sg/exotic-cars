@@ -1,15 +1,17 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.li``;
 
 export const Content = styled(Link)`
   background: ${({ theme }) => theme.colors.shape};
+  height: 100%;
   padding: 2.4rem 1.6rem;
   border-radius: 2rem;
 
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const Header = styled.header`
@@ -50,9 +52,7 @@ export const Dot = styled.div`
 
 export const Thumbnail = styled.img`
   width: 24.4rem;
-  height: 10.7rem;
   margin-top: 0.6rem;
-  object-fit: cover;
   align-self: center;
 `;
 
