@@ -8,6 +8,7 @@
       "@store": ["./src/store"],
       "@store/*": ["./src/store/*"],
       "@shared/*": ["./src/shared/*"],
+      "@shared/assets": ["./src/shared/assets"],
       "@shared/hooks": ["./src/shared/hooks"],
       "@shared/services": ["./src/shared/services"],
       "@shared/styles": ["./src/shared/styles"],
