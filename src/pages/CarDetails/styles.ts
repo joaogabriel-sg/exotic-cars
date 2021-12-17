@@ -1,8 +1,18 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
+import Slider from 'react-slick';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  ${({ theme }) => css`
+    background: linear-gradient(
+        125deg,
+        ${theme.colors.background_light} 0%,
+        ${theme.colors.background_dark} 100%
+      )
+      0% 0% no-repeat padding-box;
+  `}
+`;
 
 export const Content = styled.main`
   max-width: 124rem;
@@ -174,4 +184,46 @@ export const CarImageContainer = styled.div`
 
 export const CarImage = styled.img`
   width: 100%;
+`;
+
+export const Slides = styled(Slider)`
+  margin-top: 4.8rem;
+  padding: 2rem 0;
+`;
+
+export const Slide = styled.div`
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+type CardProps = {
+  isActive: boolean;
+};
+
+export const Card = styled.div<CardProps>`
+  background: ${({ theme, isActive }) =>
+    isActive ? theme.colors.primary_light : theme.colors.background_dark};
+  width: 34rem;
+  height: 24rem;
+
+  padding: 3.8rem;
+  border-radius: 0.8rem;
+  box-shadow: 0px 2px 30px #0000001a;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+`;
+
+export const CarColorThumb = styled.img`
+  position: relative;
+  z-index: 20;
+
+  height: 19rem;
+  transform: translateX(6%);
 `;

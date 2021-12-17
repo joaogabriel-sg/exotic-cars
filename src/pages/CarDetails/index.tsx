@@ -1,4 +1,7 @@
-import { useMemo } from 'react';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+import { useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Header } from '@components';
@@ -14,6 +17,8 @@ type Params = {
 };
 
 export function CarDetails() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const { carId } = useParams() as Params;
 
   const cars = useReduxSelector(selectCars);
@@ -42,12 +47,14 @@ export function CarDetails() {
           </S.Details>
 
           <S.Color>
-            <S.ColorIndex>01</S.ColorIndex>
-            <S.ColorName>{selectedCar.colors[0].color}</S.ColorName>
+            <S.ColorIndex>
+              {`${currentIndex + 1}`.padStart(2, '0')}
+            </S.ColorIndex>
+            <S.ColorName>{selectedCar.colors[currentIndex].color}</S.ColorName>
           </S.Color>
 
           <S.CarImageContainer>
-            <S.CarImage src={selectedCar.colors[0].image} />
+            <S.CarImage src={selectedCar.colors[currentIndex].image} />
           </S.CarImageContainer>
 
           <S.BookNowButtonContainer>
@@ -62,6 +69,24 @@ export function CarDetails() {
             Back to catalog
           </S.BackToCatalogButton>
         </S.Car>
+
+        <S.Slides
+          infinite
+          centerMode
+          focusOnSelect
+          slidesToShow={selectedCar.colors.length}
+          slidesToScroll={1}
+          beforeChange={(_, next) => setCurrentIndex(next)}
+          swipeToSlide
+        >
+          {selectedCar.colors.map(({ color, image }, index) => (
+            <S.Slide key={color}>
+              <S.Card isActive={index === currentIndex}>
+                <S.CarColorThumb src={image} />
+              </S.Card>
+            </S.Slide>
+          ))}
+        </S.Slides>
       </S.Content>
     </S.Container>
   );
