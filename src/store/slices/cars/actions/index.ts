@@ -4,7 +4,7 @@ import { getCars } from '@shared/services/api/cars/getCars';
 import { AsyncThunkConfigType } from '@shared/types';
 import { setCars } from '..';
 
-export const fetchCars = createAsyncThunk<void, unknown, AsyncThunkConfigType>(
+export const fetchCars = createAsyncThunk<void, void, AsyncThunkConfigType>(
   '@cars/fetchCars',
   async (_, thunkApi) => {
     try {
