@@ -1,6 +1,9 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Container = styled.li`
+export const Container = styled.li``;
+
+export const Content = styled(Link)`
   background: ${({ theme }) => theme.colors.shape};
   padding: 2.4rem 1.6rem;
   border-radius: 2rem;
@@ -30,7 +33,7 @@ export const Model = styled.h3`
   color: ${({ theme }) => theme.colors.text_900};
 `;
 
-export const OptionsButton = styled.button`
+export const OptionsButton = styled.div`
   background: none;
   border: none;
 
