@@ -18,7 +18,7 @@ export function Header() {
   return (
     <S.Container>
       <S.Content>
-        <S.Logo>
+        <S.Logo to="/">
           <S.HighlightedText>Exotic</S.HighlightedText> Cars
         </S.Logo>
 

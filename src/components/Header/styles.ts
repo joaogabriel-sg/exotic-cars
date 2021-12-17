@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 import { IoMenuOutline, IoClose } from 'react-icons/io5';
 
 type AuthButtonsProps = {
@@ -31,9 +32,8 @@ export const Content = styled.nav`
   justify-content: space-between;
 `;
 
-export const Logo = styled.h1`
+export const Logo = styled(Link)`
   font-size: 1.6rem;
-  font-weight: 400;
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.text_900};
 `;
