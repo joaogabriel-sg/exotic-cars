@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { motion, Variants } from 'framer-motion';
 import { BsEmojiFrown } from 'react-icons/bs';
 
 export const Container = styled.div``;
@@ -8,7 +9,24 @@ export const Content = styled.main`
   margin: 0 auto;
 `;
 
-export const CarList = styled.ul`
+const carListVariants: Variants = {
+  hidden: {
+    opacity: 1,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.2,
+      staggerChildren: 0.4,
+    },
+  },
+};
+
+export const CarList = styled(motion.ul).attrs({
+  variants: carListVariants,
+  initial: 'hidden',
+  animate: 'visible',
+})`
   width: 100%;
   padding: 2.4rem 0.8rem 24rem;
 

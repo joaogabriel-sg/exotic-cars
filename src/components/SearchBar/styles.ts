@@ -1,7 +1,22 @@
 import styled, { css } from 'styled-components';
+import { motion, Variants } from 'framer-motion';
 import { IoCalendarSharp, IoLocationSharp, IoSearch } from 'react-icons/io5';
 
-export const Container = styled.div`
+const containerVariants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+    },
+  },
+};
+
+export const Container = styled(motion.div).attrs({
+  variants: containerVariants,
+})`
   background: ${({ theme }) => theme.colors.primary_light};
   width: 100%;
   max-width: 54rem;

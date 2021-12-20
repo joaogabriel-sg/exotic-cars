@@ -1,7 +1,25 @@
 import styled from 'styled-components';
+import { motion, Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-export const Container = styled.li``;
+const containerVariants: Variants = {
+  hidden: {
+    x: -50,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.65,
+    },
+  },
+};
+
+export const Container = styled(motion.li).attrs({
+  variants: containerVariants,
+})``;
 
 export const Content = styled(Link)`
   background: ${({ theme }) => theme.colors.shape};

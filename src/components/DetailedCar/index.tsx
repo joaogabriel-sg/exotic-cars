@@ -40,10 +40,12 @@ export function DetailedCar({ car, color, image, index }: DetailedCarProps) {
         </S.BookNowButton>
       </S.BookNowButtonContainer>
 
-      <S.BackToCatalogButton to="/" $isOutlined>
-        <S.ArrowLeftIcon />
-        Back to catalog
-      </S.BackToCatalogButton>
+      <S.BackToCatalogButtonContainer>
+        <S.BackToCatalogButton to="/" $isOutlined>
+          <S.ArrowLeftIcon />
+          Back to catalog
+        </S.BackToCatalogButton>
+      </S.BackToCatalogButtonContainer>
     </S.Container>
   );
 }

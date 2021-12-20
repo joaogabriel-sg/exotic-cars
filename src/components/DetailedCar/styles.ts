@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { motion, Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 
@@ -29,7 +30,27 @@ export const Details = styled.header`
   }
 `;
 
-export const BrandLogo = styled.img`
+const brandLogoVariants: Variants = {
+  hidden: {
+    y: -25,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      type: 'spring',
+      bounce: 0.5,
+    },
+  },
+};
+
+export const BrandLogo = styled(motion.img).attrs({
+  variants: brandLogoVariants,
+  initial: 'hidden',
+  animate: 'visible',
+})`
   width: 100%;
   max-width: min(12.4rem, 35vw);
   height: auto;
@@ -46,7 +67,28 @@ export const Info = styled.div`
   }
 `;
 
-export const BrandModel = styled.h2`
+const brandModelVariants: Variants = {
+  hidden: {
+    y: 25,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.2,
+      duration: 0.6,
+      type: 'spring',
+      bounce: 0.5,
+    },
+  },
+};
+
+export const BrandModel = styled(motion.h2).attrs({
+  variants: brandModelVariants,
+  initial: 'hidden',
+  animate: 'visible',
+})`
   font-size: min(5rem, 10vw);
   text-transform: capitalize;
   color: ${({ theme }) => theme.colors.text_900};
@@ -56,7 +98,29 @@ export const BrandModel = styled.h2`
   }
 `;
 
-export const Rent = styled.span`
+const rentVariants: Variants = {
+  hidden: {
+    y: 25,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.4,
+      duration: 0.6,
+      type: 'spring',
+      bounce: 0.5,
+    },
+  },
+};
+
+export const Rent = styled(motion.span).attrs({
+  variants: rentVariants,
+  initial: 'hidden',
+  animate: 'visible',
+})`
+  display: block;
   font-size: min(4rem, 7vw);
   font-weight: 400;
   text-transform: lowercase;
@@ -74,12 +138,55 @@ export const Color = styled.div`
   }
 `;
 
-export const ColorIndex = styled.h4`
+const colorIndexVariants: Variants = {
+  hidden: {
+    x: 50,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.6,
+      duration: 0.6,
+      type: 'spring',
+      bounce: 0.5,
+    },
+  },
+};
+
+export const ColorIndex = styled(motion.h4).attrs({
+  variants: colorIndexVariants,
+  initial: 'hidden',
+  animate: 'visible',
+})`
   font-size: min(5rem, 10vw);
   color: ${({ theme }) => theme.colors.text_900};
 `;
 
-export const ColorName = styled.span`
+const colorNameVariants: Variants = {
+  hidden: {
+    x: 50,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.8,
+      duration: 0.6,
+      type: 'spring',
+      bounce: 0.5,
+    },
+  },
+};
+
+export const ColorName = styled(motion.span).attrs({
+  variants: colorNameVariants,
+  initial: 'hidden',
+  animate: 'visible',
+})`
+  display: block;
   font-size: min(3rem, 8vw);
   text-transform: capitalize;
   color: ${({ theme }) => theme.colors.text_900};
@@ -93,7 +200,24 @@ export const CarImageWrapper = styled.div`
   justify-content: center;
 `;
 
-export const CarImage = styled.img`
+const carImageVariants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.2,
+      delay: 0.8,
+    },
+  },
+};
+
+export const CarImage = styled(motion.img).attrs({
+  variants: carImageVariants,
+  initial: 'hidden',
+  animate: 'visible',
+})`
   width: 100%;
 `;
 
@@ -140,7 +264,28 @@ const Button = styled(Link)<ButtonType>`
   `}
 `;
 
-export const BackToCatalogButton = styled(Button)`
+const backToCatalogButtonContainerVariants: Variants = {
+  hidden: {
+    x: -25,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      delay: 1,
+      type: 'spring',
+      bounce: 0.5,
+    },
+  },
+};
+
+export const BackToCatalogButtonContainer = styled(motion.div).attrs({
+  variants: backToCatalogButtonContainerVariants,
+  initial: 'hidden',
+  animate: 'visible',
+})`
   grid-area: 5 / 1 / 6 / 3;
 
   @media (max-width: 916px) {
@@ -148,7 +293,30 @@ export const BackToCatalogButton = styled(Button)`
   }
 `;
 
-export const BookNowButtonContainer = styled.div`
+export const BackToCatalogButton = styled(Button)``;
+
+const bookNowButtonContainerVariants: Variants = {
+  hidden: {
+    x: 25,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      delay: 1,
+      type: 'spring',
+      bounce: 0.5,
+    },
+  },
+};
+
+export const BookNowButtonContainer = styled(motion.div).attrs({
+  variants: bookNowButtonContainerVariants,
+  initial: 'hidden',
+  animate: 'visible',
+})`
   grid-area: 7 / 4 / 8 / 6;
   display: flex;
   justify-content: center;

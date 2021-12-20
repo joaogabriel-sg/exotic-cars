@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { motion, Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { IoMenuOutline, IoClose } from 'react-icons/io5';
 
@@ -10,7 +11,25 @@ type AuthButtonProps = {
   styleType: 'primary' | 'secondary';
 };
 
-export const Container = styled.header`
+const containerVariants: Variants = {
+  hidden: {
+    y: -150,
+  },
+  visible: {
+    y: 0,
+    transition: {
+      duration: 0.6,
+      type: 'spring',
+      bounce: 0.4,
+    },
+  },
+};
+
+export const Container = styled(motion.header).attrs({
+  variants: containerVariants,
+  initial: 'hidden',
+  animate: 'visible',
+})`
   background: ${({ theme }) => theme.colors.background_light};
   width: 100%;
   height: 8.4rem;
@@ -23,7 +42,26 @@ export const Container = styled.header`
   z-index: 100000;
 `;
 
-export const Content = styled.nav`
+const contentVariants: Variants = {
+  hidden: {
+    y: -50,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.2,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+export const Content = styled(motion.nav).attrs({
+  variants: contentVariants,
+  initial: 'hidden',
+  animate: 'visible',
+})`
   width: 100%;
   max-width: 124rem;
   margin: 0 auto;
