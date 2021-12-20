@@ -32,6 +32,10 @@ export const Container = styled(motion.section).attrs({
   align-items: flex-end;
 
   position: relative;
+
+  @media (max-width: 1200px) {
+    padding: 0;
+  }
 `;
 
 export const Slider = styled(Swiper)`
