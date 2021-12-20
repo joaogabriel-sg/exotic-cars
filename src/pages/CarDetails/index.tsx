@@ -1,11 +1,10 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { CarColorsSlider, Header } from '@components';
+import { CarColorsSlider, DetailedCar, Header, Loading } from '@components';
 
-import { useReduxSelector } from '@shared/hooks';
-
-import { selectCars } from '@store/slices/cars/selectors';
+import { getCarById } from '@shared/services/api/cars/getCarById';
+import { CarType } from '@shared/types';
 
 import * as S from './styles';
 
@@ -14,19 +13,36 @@ type Params = {
 };
 
 export function CarDetails() {
+  const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [car, setCar] = useState<CarType | null>(null);
 
   const { carId } = useParams() as Params;
 
-  const cars = useReduxSelector(selectCars);
-
-  const selectedCar = useMemo(
-    () => cars.find((car) => car.id === +carId)!,
-    [carId, cars]
-  );
-
   const handleSelectCarColor = useCallback((newIndex: number) => {
     setCurrentIndex(newIndex);
+  }, []);
+
+  const loadCarData = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      setError(false);
+      const data = await getCarById(carId);
+      setCar(data);
+    } catch {
+      setError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [carId]);
+
+  const handleTryAgain = () => {
+    loadCarData();
+  };
+
+  useEffect(() => {
+    loadCarData();
   }, []);
 
   return (
@@ -34,48 +50,37 @@ export function CarDetails() {
       <Header />
 
       <S.Content>
-        <S.Car>
-          <S.Details>
-            <S.BrandLogo src={selectedCar.brandLogo} />
-            <S.Info>
-              <S.BrandModel>
-                {selectedCar.brand} {selectedCar.model}
-              </S.BrandModel>
-              <S.Rent>
-                ${selectedCar.rent.price}/{selectedCar.rent.period}
-              </S.Rent>
-            </S.Info>
-          </S.Details>
+        {isLoading && <Loading />}
 
-          <S.Color>
-            <S.ColorIndex>
-              {`${currentIndex + 1}`.padStart(2, '0')}
-            </S.ColorIndex>
-            <S.ColorName>{selectedCar.colors[currentIndex].color}</S.ColorName>
-          </S.Color>
+        {error && !isLoading && !car && (
+          <S.Wrapper>
+            <S.SadIcon />
+            <S.Message>
+              Oops...an error occurred contacting the server
+              <br />
+              or this is a non-existent car.
+            </S.Message>
+            <S.TryAgainButton type="button" onClick={handleTryAgain}>
+              Try again
+            </S.TryAgainButton>
+          </S.Wrapper>
+        )}
 
-          <S.CarImageContainer>
-            <S.CarImage src={selectedCar.colors[currentIndex].image} />
-          </S.CarImageContainer>
-
-          <S.BookNowButtonContainer>
-            <S.BookNowButton to="/">
-              Book now
-              <S.ArrowRightIcon />
-            </S.BookNowButton>
-          </S.BookNowButtonContainer>
-
-          <S.BackToCatalogButton to="/" $isOutlined>
-            <S.ArrowLeftIcon />
-            Back to catalog
-          </S.BackToCatalogButton>
-        </S.Car>
-
-        <CarColorsSlider
-          currentSlideIndex={currentIndex}
-          carColors={selectedCar.colors}
-          handleSelectCarColor={handleSelectCarColor}
-        />
+        {!error && !isLoading && car && (
+          <>
+            <DetailedCar
+              car={car}
+              color={car.colors[currentIndex].color}
+              image={car.colors[currentIndex].image}
+              index={currentIndex}
+            />
+            <CarColorsSlider
+              currentSlideIndex={currentIndex}
+              carColors={car.colors}
+              handleSelectCarColor={handleSelectCarColor}
+            />
+          </>
+        )}
       </S.Content>
     </S.Container>
   );

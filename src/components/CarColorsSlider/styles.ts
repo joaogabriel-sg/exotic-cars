@@ -19,7 +19,7 @@ export const Slider = styled(Swiper)`
     align-items: flex-end;
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1200px) {
     height: 16rem;
   }
 `;
@@ -39,9 +39,7 @@ type Props = {
 
 export const Car = styled.div<Props>`
   ${({ theme, isActive }) => css`
-    background: ${isActive
-      ? theme.colors.primary_light
-      : theme.colors.background_dark};
+    background: ${theme.colors.background_dark};
     width: 32rem;
     height: 20rem;
 
@@ -59,10 +57,11 @@ export const Car = styled.div<Props>`
 
     ${isActive &&
     css`
+      background: linear-gradient(90deg, #b9baf1 0%, #e0d3ef 100%);
       height: 26rem;
     `}
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1200px) {
       width: 26rem;
       height: 16rem;
     }
@@ -78,7 +77,7 @@ export const Thumb = styled.img<Props>`
 
   transition: all 0.2s ease;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1200px) {
     height: 14rem;
   }
 `;
