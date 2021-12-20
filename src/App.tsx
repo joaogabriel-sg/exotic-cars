@@ -2,7 +2,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 
-import { AppRoutes } from '@routes';
+import { Layout } from '@components';
 
 import { store } from '@store';
 
@@ -14,7 +14,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <GlobalStyle />
-          <AppRoutes />
+          <Layout />
         </BrowserRouter>
       </ThemeProvider>
     </Provider>

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { CarColorsSlider, DetailedCar, Header, Loading } from '@components';
+import { CarColorsSlider, DetailedCar, Loading } from '@components';
 
 import { getCarById } from '@shared/services/api/cars/getCarById';
 import { CarType } from '@shared/types';
@@ -47,8 +47,6 @@ export function CarDetails() {
 
   return (
     <S.Container>
-      <Header />
-
       <S.Content>
         {isLoading && <Loading />}
 

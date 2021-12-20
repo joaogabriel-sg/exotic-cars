@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { Car, Header, Loading } from '@components';
+import { Car, Loading } from '@components';
 
 import { useReduxDispatch, useReduxSelector } from '@shared/hooks';
 
@@ -39,8 +39,6 @@ export function CarsOverview() {
 
   return (
     <S.Container>
-      <Header />
-
       <S.Content>
         {isLoading && <Loading />}
 
