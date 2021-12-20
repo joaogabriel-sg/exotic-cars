@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { Car, Header, Loading } from '@components';
 
@@ -10,17 +10,30 @@ import { fetchCars } from '@store/slices/cars/actions';
 import * as S from './styles';
 
 export function CarsOverview() {
+  const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   const cars = useReduxSelector(selectCars);
   const dispatch = useReduxDispatch();
 
-  useEffect(() => {
-    async function loadCars() {
-      await dispatch(fetchCars());
+  const loadCars = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      setError(false);
+      await dispatch(fetchCars()).unwrap();
+      setIsLoading(false);
+    } catch {
+      setError(true);
+    } finally {
       setIsLoading(false);
     }
+  }, []);
 
+  function handleTryAgain() {
+    loadCars();
+  }
+
+  useEffect(() => {
     loadCars();
   }, []);
 
@@ -31,12 +44,33 @@ export function CarsOverview() {
       <S.Content>
         {isLoading && <Loading />}
 
-        {!isLoading && (
+        {!error && !isLoading && cars.length > 0 && (
           <S.CarList>
             {cars.map((car) => (
               <Car key={car.id} car={car} />
             ))}
           </S.CarList>
+        )}
+
+        {!error && !isLoading && cars.length === 0 && (
+          <S.Wrapper>
+            <S.SadIcon />
+            <S.Message>
+              Oops...there are no cars registered in the system.
+            </S.Message>
+          </S.Wrapper>
+        )}
+
+        {error && !isLoading && (
+          <S.Wrapper>
+            <S.SadIcon />
+            <S.Message>
+              Oops...an error occurred contacting the server.
+            </S.Message>
+            <S.TryAgainButton type="button" onClick={() => handleTryAgain()}>
+              Try again
+            </S.TryAgainButton>
+          </S.Wrapper>
         )}
       </S.Content>
     </S.Container>
