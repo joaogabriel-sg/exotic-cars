@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
-import Slider from 'react-slick';
 
 export const Container = styled.div`
   ${({ theme }) => css`
@@ -22,6 +21,7 @@ export const Content = styled.main`
 
 export const Car = styled.section`
   height: 100%;
+  margin-bottom: 4.8rem;
 
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -103,11 +103,11 @@ export const ColorName = styled.span`
 `;
 
 type ButtonType = {
-  isOutlined?: boolean;
+  $isOutlined?: boolean;
 };
 
 const Button = styled(Link)<ButtonType>`
-  ${({ theme, isOutlined }) => css`
+  ${({ theme, $isOutlined }) => css`
     background: ${theme.colors.text_900};
     width: 100%;
     max-width: 24rem;
@@ -132,7 +132,7 @@ const Button = styled(Link)<ButtonType>`
       color: ${theme.colors.text_900};
     }
 
-    ${isOutlined &&
+    ${$isOutlined &&
     css`
       background: transparent;
       color: ${theme.colors.text_900};
@@ -184,46 +184,4 @@ export const CarImageContainer = styled.div`
 
 export const CarImage = styled.img`
   width: 100%;
-`;
-
-export const Slides = styled(Slider)`
-  margin-top: 4.8rem;
-  padding: 2rem 0;
-`;
-
-export const Slide = styled.div`
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-type CardProps = {
-  isActive: boolean;
-};
-
-export const Card = styled.div<CardProps>`
-  background: ${({ theme, isActive }) =>
-    isActive ? theme.colors.primary_light : theme.colors.background_dark};
-  width: 34rem;
-  height: 24rem;
-
-  padding: 3.8rem;
-  border-radius: 0.8rem;
-  box-shadow: 0px 2px 30px #0000001a;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  position: relative;
-`;
-
-export const CarColorThumb = styled.img`
-  position: relative;
-  z-index: 20;
-
-  height: 19rem;
-  transform: translateX(6%);
 `;
