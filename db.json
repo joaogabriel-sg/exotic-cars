@@ -2,27 +2,6 @@
   "cars": [
     {
       "id": 1,
-      "brand": "Audi",
-      "brandLogo": "https://i.ibb.co/2dzKvDW/logo.png",
-      "model": "TT RS",
-      "thumbnail": "https://i.ibb.co/vH8DTkj/lateral.png",
-      "rent": {
-        "price": 525,
-        "period": "day"
-      },
-      "colors": [
-        {
-          "color": "Metal",
-          "image": "https://i.ibb.co/bKn02j8/01.jpg"
-        },
-        {
-          "color": "Red",
-          "image": "https://i.ibb.co/RTmwvvx/02.jpg"
-        }
-      ]
-    },
-    {
-      "id": 2,
       "brand": "Ferrari",
       "brandLogo": "https://i.ibb.co/swjw4B6/logo.png",
       "model": "California",
@@ -47,7 +26,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": 2,
       "brand": "Lamborghini",
       "brandLogo": "https://i.ibb.co/PQ2G9c2/logo.png",
       "model": "Aventador",
@@ -72,28 +51,24 @@
       ]
     },
     {
-      "id": 4,
+      "id": 3,
       "brand": "Mustang",
-      "brandLogo": "https://i.ibb.co/mB4nFsR/logo.png",
+      "brandLogo": "https://i.ibb.co/BT6mrDH/mustang-logo.png",
       "model": "Shelby GT500",
-      "thumbnail": "https://i.ibb.co/2tKK9m2/lateral.png",
+      "thumbnail": "https://i.ibb.co/ww19VSS/mustang-lateral.png",
       "rent": {
         "price": 610,
         "period": "day"
       },
       "colors": [
         {
-          "color": "Blue",
-          "image": "https://i.ibb.co/M7HxFcY/01.png"
-        },
-        {
-          "color": "Green",
-          "image": "https://i.ibb.co/6wC81w4/02.png"
+          "color": "Red",
+          "image": "https://i.ibb.co/3CrZNxv/mustang-red.png"
         }
       ]
     },
     {
-      "id": 5,
+      "id": 4,
       "brand": "Porsche",
       "brandLogo": "https://i.ibb.co/W258kgD/logo.png",
       "model": "Macan Turbo",
@@ -118,23 +93,23 @@
       ]
     },
     {
-      "id": 6,
-      "brand": "Porsche",
-      "brandLogo": "https://i.ibb.co/W258kgD/logo.png",
-      "model": "Panamera",
-      "thumbnail": "https://i.ibb.co/1ZnTsHz/lateral.jpg",
+      "id": 5,
+      "brand": "Chevrolet",
+      "brandLogo": "https://i.ibb.co/gmQhqCZ/chevrolet-logo.png",
+      "model": "Camaro",
+      "thumbnail": "https://i.ibb.co/5x5bqF9/camaro-lateral.png",
       "rent": {
         "price": 640,
         "period": "day"
       },
       "colors": [
         {
-          "color": "White",
-          "image": "https://i.ibb.co/fkXCr6W/02.png"
+          "color": "Yellow",
+          "image": "https://i.ibb.co/fv8nKPc/camaro-yellow.png"
         },
         {
-          "color": "Black",
-          "image": "https://i.ibb.co/vHX9g89/01.jpg"
+          "color": "Red",
+          "image": "https://i.ibb.co/W2CzDvs/camaro-red.png"
         }
       ]
     }

@@ -72,11 +72,13 @@ export function CarDetails() {
               image={car.colors[currentIndex].image}
               index={currentIndex}
             />
-            <CarColorsSlider
-              currentSlideIndex={currentIndex}
-              carColors={car.colors}
-              handleSelectCarColor={handleSelectCarColor}
-            />
+            {car.colors.length > 1 && (
+              <CarColorsSlider
+                currentSlideIndex={currentIndex}
+                carColors={car.colors}
+                handleSelectCarColor={handleSelectCarColor}
+              />
+            )}
           </>
         )}
       </S.Content>
